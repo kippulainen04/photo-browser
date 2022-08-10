@@ -1,7 +1,10 @@
+import React from "react";
+import ImagesList from "./components/ImagesList";
+
 function App() {
   return (
     <div className="App">
-      hello
+      <ImagesList />
     </div>
   );
 }
