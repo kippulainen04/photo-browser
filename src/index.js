@@ -5,7 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { getImages } from './reducers/imagesSlice';
 
+store.dispatch(getImages());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

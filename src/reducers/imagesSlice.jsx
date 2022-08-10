@@ -1,35 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import getAll from "../services/images";
 
-const initialState = [
-    {
-        albumId: 1,
-        id: 1,
-        title: "accusamus beatae ad facilis cum similique qui sunt",
-        url: "https://via.placeholder.com/600/92c952",
-        thumbnailUrl: "https://via.placeholder.com/150/92c952"
-        },
-        {
-        albumId: 1,
-        id: 2,
-        title: "reprehenderit est deserunt velit ipsam",
-        url: "https://via.placeholder.com/600/771796",
-        thumbnailUrl: "https://via.placeholder.com/150/771796"
-        },
-        {
-        albumId: 1,
-        id: 3,
-        title: "officia porro iure quia iusto qui ipsa ut modi",
-        url: "https://via.placeholder.com/600/24f355",
-        thumbnailUrl: "https://via.placeholder.com/150/24f355"
-        },
-]
+const initialState = {
+    images: [],
+    status: 'idle',
+    error: null
+}
+
+export const getImages = createAsyncThunk('images/getImages', async () => {
+   const res = await getAll()
+   return res
+})
 
 const imagesSlice = createSlice({
     name: 'images',
     initialState,
     reducers: {
-
+    },
+    extraReducers(builder) {
+        builder
+        .addCase(getImages.pending, (state, action) => {
+            state.status = 'loading'
+        })
+        .addCase(getImages.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.images = action.payload
+        })
+        .addCase(getImages.rejected, (state, action) => {
+            state.status = 'failed'
+            state.error = action.error.message
+        })
     }
 })
+
+export const getAllImages = (state) => state.images.images;
+export const getImagesStatus = (state) => state.images.status;
+export const getImagesError = (state) => state.images.error;
 
 export default imagesSlice.reducer;
