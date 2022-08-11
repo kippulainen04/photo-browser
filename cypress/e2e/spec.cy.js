@@ -1,4 +1,6 @@
-describe('Home Page', () => {
+describe('Home Page', {
+  defaultCommandTimeout: 8000
+}, () => {
   beforeEach(function() {
     cy.visit('http://localhost:3000')
   })
@@ -20,8 +22,18 @@ describe('Home Page', () => {
     .and('have.css', 'font-weight', '700')
     cy.get('html').should('contain', 'Photo Browser')
   })
-
-  // it('navigate to another page', function () {
-  //   cy.contains('3').click()
-  // })
 })
+
+describe('Single Page', {
+  defaultCommandTimeout: 8000
+}, () => {
+  it('navigate to another page', function () {
+    cy.visit('http://localhost:3000/image/12');
+    cy.contains('mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores');
+    cy.contains('Next').get('#next').click();
+    cy.url().should('include', 'http://localhost:3000/image/13');
+    cy.contains('repudiandae iusto deleniti rerum');
+
+  })
+
+})  
