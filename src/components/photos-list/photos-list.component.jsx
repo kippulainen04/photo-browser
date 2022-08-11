@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { getAllImages, getImagesError, getImagesStatus } from '../reducers/imagesSlice';
+import { Link } from 'react-router-dom';
+import { getAllImages, getImagesError, getImagesStatus } from '../../reducers/imagesSlice';
 import { Container, PhotosArea, PhotosMedia, PhotosContent } from './photos-list.style';
 
-const Photo = ({photo}) => {
+const Photo = memo(({photo}) => {
     const  { id, thumbnailUrl, title } = photo
+
     return (
-        <PhotosArea>
+        <PhotosArea id="thumbnail">
             <PhotosMedia>
-                <img 
-                    alt={`name ${title}`}
-                    src={thumbnailUrl}
-                />
+                <Link to={`image/${id}`}>
+                    <img    
+                            id="image"
+                            alt={`name ${title}`}
+                            src={thumbnailUrl}
+                            loading="lazy"
+                        />
+                </Link>
             </PhotosMedia>
             <PhotosContent>
                 {id}
             </PhotosContent>
         </PhotosArea>
     )
-}
+});
 
 
 const PhotosList = () => {

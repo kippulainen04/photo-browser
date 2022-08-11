@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import getAll from "../services/images";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import getAll from '../services/images';
 
 const initialState = {
     images: [],
@@ -16,6 +16,9 @@ const imagesSlice = createSlice({
     name: 'images',
     initialState,
     reducers: {
+        setImages(state, action) {
+            return action.payload
+        }
     },
     extraReducers(builder) {
         builder
@@ -36,5 +39,8 @@ const imagesSlice = createSlice({
 export const getAllImages = (state) => state.images.images;
 export const getImagesStatus = (state) => state.images.status;
 export const getImagesError = (state) => state.images.error;
+export const getImageById = (state, imageId) => 
+state.images.images.find(image => image.id === imageId);
 
+export const { setImages } = imagesSlice.actions
 export default imagesSlice.reducer;
