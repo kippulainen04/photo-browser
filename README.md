@@ -77,11 +77,11 @@ After fulfilling the project, I acquire knowledge to:
 
 1. Cloning the project & rendering on your local browser
 * The respository can be [cloned](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) as other github repository 
-* Then `npm start` runs the app in the development mode - Open [http://localhost:3000]
+* Then `npm install` & `npm start` runs the app in the development mode - Open [http://localhost:3000]
 
 2. Using the live code
 * Open your webbrowser
-* Then add [this link](https://kippulainen04.github.io/photo-browser/) to your browser
+* Then add [this link](https://photos-browser.netlify.app/) to your browser
 
 <div id='author'/>
 
