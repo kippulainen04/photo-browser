@@ -33,15 +33,15 @@ const Header = styled.header`
   z-index: 999;
 `
 
-const Navigation = () => {""
+const Navigation = () => {''
   return (
     <Header>
-        <h1>Photo Browser</h1>
-        <HomePage>
-            <Link style={{textDecoration: 'none', color: 'black'}} to="/">
-              <span>Home</span>
-            </Link>
-        </HomePage>
+      <h1>Photo Browser</h1>
+      <HomePage>
+        <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+          <span>Home</span>
+        </Link>
+      </HomePage>
     </Header>
   )
 }

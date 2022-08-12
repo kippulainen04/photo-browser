@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import imagesReducer from './reducers/imagesSlice';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit'
+import imagesReducer from './reducers/imagesSlice'
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, persistStore } from 'redux-persist'
 
 
 const persistConfig = {
@@ -12,10 +12,10 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, imagesReducer)
 
 export const store = configureStore ({
-    reducer: {
-      images: persistedReducer,
-    },
-    middleware: getDefaultMiddleware =>
+  reducer: {
+    images: persistedReducer,
+  },
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
